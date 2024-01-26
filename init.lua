@@ -152,10 +152,14 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
+    --
+    --
     'folke/tokyonight.nvim',
     priority = 1000,
+    lazy = false,
     config = function()
       vim.cmd.colorscheme 'tokyonight-storm'
+      -- vim.cmd.colorscheme 'solarized-osaka'
     end,
   },
 
@@ -167,6 +171,7 @@ require('lazy').setup({
       options = {
         icons_enabled = true,
         theme = 'tokyonight',
+        -- theme = 'solarized_osaka',
         component_separators = '|',
         section_separators = '',
       },
@@ -333,7 +338,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'vue', 'php', },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -560,5 +565,4 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require('autocommands')

@@ -100,7 +100,6 @@ local config = function()
 
   for _, ft_path in ipairs(vim.api.nvim_get_runtime_file('lua/dafs/snips/ft/*.lua', true)) do
     local ft = vim.fn.fnamemodify(ft_path, ':t:r')
-    print('Loading snippets for: ' .. ft)
     ls.add_snippets(ft, make(loadfile(ft_path)()))
   end
 
@@ -114,7 +113,7 @@ local config = function()
 
   -- <c-j> is my jump backwards key.
   -- this always moves to the previous item within the snippet
-  vim.keymap.set({ 'i', 's' }, '<c-j>', function()
+  vim.keymap.set({ 'i', 's' }, '<c-m>', function()
     if ls.jumpable(-1) then
       ls.jump(-1)
     end

@@ -1,14 +1,6 @@
 vim.opt.relativenumber = true
 
 vim.keymap.set('n', '<c-n>', ':Neotree toggle<cr>')
-
-vim.g.copilot_no_tab_map = true
-
--- disable wordwrap
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_no_wrap = true
-vim.api.nvim_set_keymap('i', '<c-j>', 'copilot#Accept()', { silent = true, expr = true })
-
 vim.keymap.set('i', '<c-s>', ':Telescope symbols<cr>')
 
 require('neo-tree').setup {
@@ -26,3 +18,6 @@ vim.opt.tabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.softtabstop = 3
 vim.opt.expandtab = true
+vim.g.snippets = 'luasnip'
+
+--

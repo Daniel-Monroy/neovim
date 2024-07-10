@@ -1,20 +1,20 @@
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  pattern = { '*' },
   command = [[%s/\s\+$//e]],
 })
 
 -- Formater
-vim.api.nvim_create_augroup("FormatAutoGroup", { clear = true})
+vim.api.nvim_create_augroup('FormatAutoGroup', { clear = true })
 
 -- Auto-comando que formatea el archivo en el evento BufWritePost
 vim.api.nvim_create_autocmd('BufWritePost', {
   group = 'FormatAutoGroup',
   pattern = '*.js,*.jsx,*.ts,*.tsx,*.json,*.css,*.scss,*.md,*.vue',
   callback = function()
-    vim.cmd('FormatWrite')
-  end
+    vim.cmd 'FormatWrite'
+  end,
 })
 
 -- Crea un grupo de auto-comandos si aún no existe
@@ -29,15 +29,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     local line_count = vim.api.nvim_buf_line_count(0)
 
     -- Obtén la última línea del archivo
-    local last_line = vim.api.nvim_buf_get_lines(0, line_count - 1, line_count, false)[1] or ""
+    local last_line = vim.api.nvim_buf_get_lines(0, line_count - 1, line_count, false)[1] or ''
 
     -- Si la última línea no está vacía, agrega una nueva línea al final
-    if last_line ~= "" then
-      vim.api.nvim_buf_set_lines(0, line_count, line_count, false, {""})
+    if last_line ~= '' then
+      vim.api.nvim_buf_set_lines(0, line_count, line_count, false, { '' })
     end
-  end
+  end,
 })
 
 -- Configurar 'autoread' en toda la instancia de Neovim
 vim.o.autoread = true
-
